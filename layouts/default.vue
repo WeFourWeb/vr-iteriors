@@ -50,22 +50,38 @@
         </v-list>
       </v-navigation-drawer>
     </v-card>
-    <v-container>
+    <v-container id='componentContainer'>
       <nuxt/>
     </v-container>
+    <div id="particles"></div>
   </v-app>
 </template>
 
 <script>
+import 'particles.js'
+
 export default {
   data () {
     return {
 
     }
+  },
+  mounted () {
+    particlesJS.load('particles', 'particles.json')
   }
 }
 </script>
 
 <style lang="css" scoped>
+  #particles {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background: #242424;
+    z-index: 0;
+  }
 
+  #componentContainer {
+    z-index: 1
+  }
 </style>

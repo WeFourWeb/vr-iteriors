@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="project in projects" :key="project.id">
+      <v-col max-width="100" v-for="project in projects" :key="project.id">
         <v-card>
           <v-card-title>
             {{ project.title }}
@@ -17,15 +17,13 @@
                   project description
                 </v-subheader>
                 <v-list-item>
-                  {{ project.description }}
+                  description: {{ project.details.description }}
                 </v-list-item>
-                <v-subheader>
-                  Layers
-                </v-subheader>
-                <v-list-item v-for="(model, index) in project.models" :key="index">
-                  <v-list-item-content>
-                     {{ model.type }}
-                  </v-list-item-content>
+                <v-list-item>
+                  size: {{ project.details.size }}
+                </v-list-item>
+                <v-list-item>
+                  upload date: {{ project.details.uploadDate }}
                 </v-list-item>
               </v-list>
             </div>
@@ -44,24 +42,14 @@ export default {
         {
           id: 0,
           title: 'test project',
-          showDetails: false,
-          description: 'lorem ipsum dolor sit amet',
-          models: [
-            {
-              type: 'interior',
-              path: 'projectId-ModelType'
-            },
-            {
-              type: 'piping',
-              path: 'projectId-ModelType'
-            },
-            {
-              type: 'wiring',
-              path: 'projectId-ModelType'
-            }
-          ]
+          showDetails: false, 
+          details: {
+            size: '100kB',
+            uploadDate: '01.01.2021',
+            description: 'lorem ipsum dolor sit amet',
+          }
         }
-      ]
+      ],
     }
   }
 }
